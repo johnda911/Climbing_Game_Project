@@ -1,0 +1,18 @@
+export const CONSTANTS = {
+    // ROCK_SPEED: 2,
+    // ROCK_HEIGHT: 15,
+    // ROCK_WIDTH: 100,
+    // EDGE_BUFFER: 30,
+    // WARM_UP_SECONDS: 1,
+    CANVAS_HEIGHT: 800,
+    CANVAS_WIDTH: 600,
+    ROCK_HEIGHT: 40,
+    ROCK_WIDTH: 100,
+    CLIMBER_HEIGHT: 120,
+    CLIMBER_WIDTH: 100,
+    TOTAL_ROCKS: 5
+};
+
+export function getVerticalGap() {
+    return (CONSTANTS.CANVAS_HEIGHT - 40) / CONSTANTS.TOTAL_ROCKS;
+}
