@@ -2,19 +2,28 @@
 import Rock from "./rock.js";
 
 import { CONSTANTS, getVerticalGap } from "./constants.js";
+import Climber from "./climber.js";
 
 
 
 export default class Game {
     constructor() {
-
         //declare variables 
-        const gravity = 0.35;
-        this.gravity = gravity;
         this.rocks = [];
         this.bottomRock = 0;
 
+
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext("2d");
+        this.ctx = ctx;
+        this.canvas = canvas;
+
+        // window.addEventListener('keyleft',this.keyleft,false);
+        // window.addEventListener('keyright',this.keyright,false);
+        // window.addEventListener('keyup',this.keyup,false);
+
         this.addRocks();
+        this.createClimber();
 
     }
 
@@ -40,9 +49,11 @@ export default class Game {
         for (let i = 0; i < this.bottomRock - 2; i++) {
             rocks.shift();
         }
-
     }
 
+    createClimber() {
+        new Climber();
+    }
 
 
 

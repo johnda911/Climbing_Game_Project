@@ -9,11 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.height = CONSTANTS.CANVAS_HEIGHT;
     const ctx = canvas.getContext("2d");
 
-
-
-
-
-
     //invoke new game instance
     const game = new Game();
 
