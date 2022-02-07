@@ -6,11 +6,12 @@ export const CONSTANTS = {
     // WARM_UP_SECONDS: 1,
     CANVAS_HEIGHT: 800,
     CANVAS_WIDTH: 600,
-    ROCK_HEIGHT: 40,
-    ROCK_WIDTH: 100,
+    ROCK_HEIGHT: 30,
+    ROCK_WIDTH: 60,
     CLIMBER_HEIGHT: 120,
     CLIMBER_WIDTH: 100,
-    TOTAL_ROCKS: 5
+    TOTAL_ROCKS: 5,
+    GRAVITY: 0.35
 };
 
 export function getVerticalGap() {

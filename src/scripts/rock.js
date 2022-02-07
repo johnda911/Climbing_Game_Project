@@ -1,39 +1,48 @@
 import { CONSTANTS } from "./constants.js";
+import Game from "./game.js";
 
 export default class Rock {
-    constructor(bottomDistance, leftBase) {
-        if (leftBase) {
-            const leftWall = Math.max(leftBase - 1.5 * CONSTANTS.CLIMBER_WIDTH, 0);
-            const rightWall = Math.min(leftBase + 1.5 * CONSTANTS.CLIMBER_WIDTH + CONSTANTS.ROCK_WIDTH, CONSTANTS.CANVAS_WIDTH - CONSTANTS.ROCK_WIDTH);
-            this.left = leftWall + Math.random() * (rightWall - leftWall);
-        } else {
-            this.left = CONSTANTS.ROCK_WIDTH * 0.6 + Math.random() * (CONSTANTS.CANVAS_WIDTH - 2 * CONSTANTS.CLIMBER_WIDTH);
-        }
-        this.bottom = bottomDistance;
-        this.renderRock = document.createElement('div');
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.width = CONSTANTS.ROCK_WIDTH;
+        this.height = CONSTANTS.ROCK_HEIGHT;
 
-        const renderRock = this.renderRock;
-        renderRock.classList.add('rock');
-        renderRock.style.left = this.left + 'px';
-        renderRock.style.bottom = this.bottom + 'px';
-        document.getElementById("climb-game").appendChild(renderRock);
+        //grab variables from index.js:
+
+
+
+
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext("2d");
+        this.ctx = ctx;
+        this.canvas = canvas;
+
+        this.draw();
     }
 
-    getBottom() {
-        return this.bottom;
-    }
-
-    makeid(length) {
-        var result = '';
-        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var charactersLength = characters.length;
-        for (var i = 0; i < length; i++) {
-            result += characters.charAt(Math.floor(Math.random() *
-                charactersLength));
-        }
-        return result;
+    draw() {
+        this.ctx.fillStyle = "grey";
+        this.ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
 }
 
 
+
+
+
+
+// function spawnBlock() {
+//     var blockChances = {
+//         "break": 15,
+//         "sideways": Math.round(10 / difficulty)
+//     };
+
+//     if (Math.round(Math.random() * blockChances["break"]) === 0) {
+//         return "break";
+//     } else if (Math.round(Math.random() * blockChances["sideways"]) === 0) {
+//         return "sideways";
+//     }
+//     return 0;
+// }

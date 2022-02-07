@@ -1,35 +1,7 @@
-#climb-game {
-  /* background-image: url(""); */
-  position: relative;
-  width: 600px;
-  height: 800px;
-  background-color: green;
-  /* font-size: 100px; */
-  text-align: center;
-}
-
 body {
-  height: 1200px;
+  /* height: 1200px; */
+  margin: 0;
 }
-
-#climberA {
-  width: 100px;
-  height: 120px;
-  background-color: orange;
-  position: absolute;
-}
-
-.rock {
-  width: 100px;
-  height: 40px;
-  background-color: black;
-  position: absolute;
-}
-
-.dragon {
-  width: 120px;
-  height: 130px;
-  background-color: purple;
-  opacity: 0.6;
-  position: absolute;
+#canvas {
+  border: 1px solid black;
 }
