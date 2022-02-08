@@ -1,6 +1,6 @@
 // import KingKong from "./kingKong.js";
 import Rock from "./rock.js";
-
+import jungle from "../imgs/jungle.png";
 import { CONSTANTS, getVerticalGap } from "./constants.js";
 import Climber from "./climber.js";
 
@@ -11,19 +11,29 @@ export default class Game {
         //declare variables 
         this.rocks = [];
         this.bottomRock = 0;
-
+        this.rockParam = {
+            bottomRock: 0
+        };
 
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext("2d");
         this.ctx = ctx;
         this.canvas = canvas;
 
-        // window.addEventListener('keyleft',this.keyleft,false);
-        // window.addEventListener('keyright',this.keyright,false);
-        // window.addEventListener('keyup',this.keyup,false);
+
+        window.addEventListener('keyleft', this.keyleft, false);
+        window.addEventListener('keyright', this.keyright, false);
+        window.addEventListener('keyup', this.keyup, false);
 
         this.addRocks();
         this.createClimber();
+        this.loop();
+        // Time variables
+        this.fps = 60;
+        this.now;
+        this.then = Date.now();
+        this.interval = 1000 / this.fps;
+        this.delta;
 
     }
 
@@ -40,7 +50,7 @@ export default class Game {
         for (i; i < this.bottomRock + 60; i++) {
             if (i >= this.rocks.length) {
                 let x = Math.random() * (CONSTANTS.CANVAS_WIDTH - CONSTANTS.ROCK_WIDTH);
-                let y = this.rocks[i - 1].y - ((Math.random() * 80) + 30);
+                let y = this.rocks[i - 1].y - ((Math.random() * 80) + 35);
                 this.rocks.push(new Rock(x, y));
             }
         }
@@ -52,10 +62,43 @@ export default class Game {
     }
 
     createClimber() {
-        new Climber();
+        this.climber = new Climber(this.rocks, this.rockParam);
     }
 
 
+
+    loop() {
+        requestAnimationFrame(() => this.loop());
+
+        //This sets the FPS to 60
+        this.now = Date.now();
+        this.delta = this.now - this.then;
+
+        // Moving canvas jungle background to be continued
+        let backgroundImage = new Image(CONSTANTS.CANVAS_WIDTH, CONSTANTS.CANVAS_HEIGHT);
+        backgroundImage.onload = () => {
+            this.ctx.drawImage(backgroundImage, 0, 0, CONSTANTS.CANVAS_WIDTH, CONSTANTS.CANVAS_HEIGHT);
+        };
+        backgroundImage.src = jungle;
+
+        if (this.delta > this.interval) {
+            for (let j = 0; j < this.rocks.length; j++) {
+                if (this.rocks[j] !== 0) {
+                    //add rock.update after dragon feature
+                    // this.rocks[j].update();
+                    this.rocks[j].draw();
+                }
+            }
+
+            this.climber.update();
+            this.climber.draw();
+
+            // showScore();
+
+            this.ctx.fill();
+            this.then = this.now - (this.delta % this.interval);
+        }
+    }
 
 }
 

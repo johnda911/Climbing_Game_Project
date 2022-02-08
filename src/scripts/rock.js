@@ -1,5 +1,6 @@
 import { CONSTANTS } from "./constants.js";
 import Game from "./game.js";
+// import ivy from "../imgs/ivy.png";
 
 export default class Rock {
     constructor(x, y) {
@@ -7,12 +8,12 @@ export default class Rock {
         this.y = y;
         this.width = CONSTANTS.ROCK_WIDTH;
         this.height = CONSTANTS.ROCK_HEIGHT;
+        this.direction = "right";
+        this.moveTime = 10;
 
-        //grab variables from index.js:
-
-
-
-
+        // this.img = new Image(CONSTANTS.ROCK_WIDTH, CONSTANTS.ROCK_HEIGHT);
+        // this.img.onload = () => this.draw();
+        // this.img.src = ivy;
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext("2d");
         this.ctx = ctx;
@@ -24,25 +25,10 @@ export default class Rock {
     draw() {
         this.ctx.fillStyle = "grey";
         this.ctx.fillRect(this.x, this.y, this.width, this.height);
+        // this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
 }
 
 
 
-
-
-
-// function spawnBlock() {
-//     var blockChances = {
-//         "break": 15,
-//         "sideways": Math.round(10 / difficulty)
-//     };
-
-//     if (Math.round(Math.random() * blockChances["break"]) === 0) {
-//         return "break";
-//     } else if (Math.round(Math.random() * blockChances["sideways"]) === 0) {
-//         return "sideways";
-//     }
-//     return 0;
-// }
