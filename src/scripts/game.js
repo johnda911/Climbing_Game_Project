@@ -14,40 +14,38 @@ export default class Game {
         this.rockParam = {
             bottomRock: 0
         };
+        this.score = 0;
 
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext("2d");
         this.ctx = ctx;
         this.canvas = canvas;
 
-
-        window.addEventListener('keyleft', this.keyleft, false);
-        window.addEventListener('keyright', this.keyright, false);
-        window.addEventListener('keyup', this.keyup, false);
-
         this.addRocks();
-        this.createClimber();
-        this.loop();
+        this.climber = this.createClimber(this.rocks, this.rockParam);
+        this.startGame();
+
+
         // Time variables
-        this.fps = 60;
+        this.fps = 70;
         this.now;
         this.then = Date.now();
         this.interval = 1000 / this.fps;
         this.delta;
 
+        this.isAnimationOn = false;
     }
 
     addRocks() {
         let firstRock = new Rock(250, 670);
         this.rocks.push(firstRock);
         this.rockMover();
-        console.log(this.rocks);
     }
 
     rockMover() {
         let i = this.bottomRock === 0 ? 1 : this.bottomRock;
 
-        for (i; i < this.bottomRock + 60; i++) {
+        for (i; i < this.bottomRock + 600; i++) {
             if (i >= this.rocks.length) {
                 let x = Math.random() * (CONSTANTS.CANVAS_WIDTH - CONSTANTS.ROCK_WIDTH);
                 let y = this.rocks[i - 1].y - ((Math.random() * 80) + 35);
@@ -61,16 +59,100 @@ export default class Game {
         }
     }
 
-    createClimber() {
-        this.climber = new Climber(this.rocks, this.rockParam);
+    createClimber(rocks, rockParam) {
+        return new Climber(rocks, rockParam);
+        // this.climber = new Climber(this.rocks, this.rockParam);
     }
 
+    startGame() {
+        // climb up
+        document.addEventListener('keyup', event => {
+            if (event.code === 'Space' && this.climber.stay) {
+                this.climber.climb();
+            }
 
+            if (event.code === 'ArrowLeft') {
+                this.climber.holdingLeft = false;
+            }
+            if (event.code === 'ArrowRight') {
+                this.climber.holdingRight = false;
+            }
+            event.stopPropagation();
+        });
+
+        // go left/right
+        document.addEventListener('keydown', event => {
+            if (event.code === 'ArrowLeft' && !this.climber.isGameOver) {
+                this.climber.holdingLeft = true;
+            }
+            if (event.code === 'ArrowRight' && !this.climber.isGameOver) {
+                this.climber.holdingRight = true;
+            }
+
+            if (event.code === 'Enter' && this.climber.isGameOver) {
+                this.climber.isGameOver = false;
+                this.resetGame();
+            }
+
+            event.stopPropagation();
+        });
+
+        // let the animation begin
+        if (!this.isAnimationOn) {
+            this.loop();
+        }
+    }
+
+    showRockCounts() {
+        if (this.climber.verticalElevated > this.climber.score) {
+            this.climber.score = Math.round(this.climber.verticalElevated);
+        }
+        this.ctx.font = "36px Arial";
+        this.ctx.fillStyle = "white";
+        this.ctx.textAlign = "left";
+        this.ctx.fillText(this.climber.score, 20, 30);
+
+        // this.renderScore = document.createElement('div');
+        // const renderScore = this.renderScore;
+        // renderScore.classList.add('score');
+        // renderScore.style.left = '10 px';
+        // renderScore.style.bottom = '60 px';
+        // renderScore.style.color = "pink";
+
+        // renderScore.innerText = '${this.climber.score}';
+        // document.getElementsById('rock-counts').appendChild(this.renderScore);
+
+
+        // console.log(this.climber.score);
+    }
+
+    resetGame() {
+        this.rocks = [];
+        this.bottomRock = 0;
+        this.rockParam = {
+            bottomRock: 0
+        };
+        this.addRocks();
+
+        this.climber = this.createClimber(this.rocks, this.rockParam);
+        this.climber.x = 250;
+        this.climber.y = 700;
+
+
+        // Time variables
+        // this.fps = 60;
+        // this.now;
+        // this.then = Date.now();
+        // this.interval = 1000 / this.fps;
+        // this.delta;
+        this.startGame();
+    }
 
     loop() {
+        this.isAnimationOn = true;
         requestAnimationFrame(() => this.loop());
 
-        //This sets the FPS to 60
+        //sets the FPS to 60
         this.now = Date.now();
         this.delta = this.now - this.then;
 
@@ -92,10 +174,9 @@ export default class Game {
 
             this.climber.update();
             this.climber.draw();
+            this.showRockCounts();
 
-            // showScore();
-
-            this.ctx.fill();
+            // this.ctx.fill();
             this.then = this.now - (this.delta % this.interval);
         }
     }

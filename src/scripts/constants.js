@@ -1,16 +1,12 @@
 export const CONSTANTS = {
-    // ROCK_SPEED: 2,
-    // ROCK_HEIGHT: 15,
-    // ROCK_WIDTH: 100,
     // EDGE_BUFFER: 30,
     // WARM_UP_SECONDS: 1,
     CANVAS_HEIGHT: 800,
     CANVAS_WIDTH: 600,
     ROCK_HEIGHT: 30,
-    ROCK_WIDTH: 60,
+    ROCK_WIDTH: 70,
     CLIMBER_HEIGHT: 70,
     CLIMBER_WIDTH: 70,
-    TOTAL_ROCKS: 5,
     GRAVITY: 0.35
 };
 

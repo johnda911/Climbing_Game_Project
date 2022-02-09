@@ -1,6 +1,5 @@
 import { CONSTANTS } from "./constants.js";
-import Game from "./game.js";
-// import ivy from "../imgs/ivy.png";
+import brick from "../imgs/banana.png";
 
 export default class Rock {
     constructor(x, y) {
@@ -11,9 +10,9 @@ export default class Rock {
         this.direction = "right";
         this.moveTime = 10;
 
-        // this.img = new Image(CONSTANTS.ROCK_WIDTH, CONSTANTS.ROCK_HEIGHT);
-        // this.img.onload = () => this.draw();
-        // this.img.src = ivy;
+        this.img = new Image(CONSTANTS.ROCK_WIDTH, CONSTANTS.ROCK_HEIGHT);
+        this.img.onload = () => this.draw();
+        this.img.src = brick;
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext("2d");
         this.ctx = ctx;
@@ -23,9 +22,7 @@ export default class Rock {
     }
 
     draw() {
-        this.ctx.fillStyle = "grey";
-        this.ctx.fillRect(this.x, this.y, this.width, this.height);
-        // this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
 }

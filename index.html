@@ -10,14 +10,33 @@
   </head>
 
   <body>
-    <div class="title-part">
-      <h1>Welcome to the Climbing Game!</h1>
-    </div>
+    <header class="header">
+      <nav class="header-nav">
+        <h2 class="header-logo">
+          <button class="instructions">Instructions</button>
+        </h2>
 
-    <div class="nav-part"></div>
+        <ul class="header-list">
+          <li>
+            <a href="#">Music Button <strong class="badge">3</strong></a>
+            <ul class="turn-music">
+              <li><a href="#">On</a></li>
+              <li><a href="#">Off</a></li>
+            </ul>
+          </li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">About Creater</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <div class="main-part">
-      <canvas id="canvas"></canvas>
-    </div>
+    <main class="content">
+      <section class="character-choice">
+        <h1>Pick a character</h1>
+      </section>
+      <session class="climb-game">
+        <canvas id="canvas"></canvas>
+      </session>
+    </main>
   </body>
 </html>

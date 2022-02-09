@@ -1,5 +1,40 @@
 import { CONSTANTS } from "./constants.js";
-import leftMonkeyImg from "../imgs/monkey.png";
+import leftMonkeyImg from "../imgs/newLeft.png";
+import rightMonkeyImg from "../imgs/newRight.png";
+import l0 from "../imgs/monkey/l0.png";
+import l1 from "../imgs/monkey/l1.png";
+import l2 from "../imgs/monkey/l2.png";
+import l3 from "../imgs/monkey/l3.png";
+import l4 from "../imgs/monkey/l4.png";
+import l5 from "../imgs/monkey/l5.png";
+import l6 from "../imgs/monkey/l6.png";
+import l7 from "../imgs/monkey/l7.png";
+import l8 from "../imgs/monkey/l8.png";
+import l9 from "../imgs/monkey/l9.png";
+import l10 from "../imgs/monkey/l10.png";
+import l11 from "../imgs/monkey/l11.png";
+
+
+const MK_IMG0 = createImg(l0);
+const MK_IMG1 = createImg(l1);
+const MK_IMG2 = createImg(l2);
+const MK_IMG3 = createImg(l3);
+const MK_IMG4 = createImg(l4);
+const MK_IMG5 = createImg(l5);
+const MK_IMG6 = createImg(l6);
+const MK_IMG7 = createImg(l7);
+const MK_IMG8 = createImg(l8);
+const MK_IMG9 = createImg(l9);
+const MK_IMG10 = createImg(l10);
+const MK_IMG11 = createImg(l11);
+
+const MONKEY_LEFT_IMGS = [MK_IMG0, MK_IMG1, MK_IMG2, MK_IMG3, MK_IMG4, MK_IMG5, MK_IMG6, MK_IMG7, MK_IMG8, MK_IMG9, MK_IMG10, MK_IMG11];
+
+function createImg(img) {
+    const myImg = new Image(70, 70);
+    myImg.src = img;
+    return myImg;
+}
 
 export default class Climber {
     constructor(rocks, rockParam) {
@@ -9,33 +44,31 @@ export default class Climber {
         this.width = CONSTANTS.CLIMBER_WIDTH;
         this.height = CONSTANTS.CLIMBER_HEIGHT;
         this.gravity = CONSTANTS.GRAVITY;
-        this.xSpeed = 6.8;
-        this.ySpeed = -15;
-        this.direction = "left";
+        this.xSpeed = 7;
+        this.ySpeed = 0;
         this.isGameOver = false;
         this.rocks = rocks;
         this.rockParam = rockParam;
-        this.yDistanceTravelled = 0;
-        this.stay = false;
+        this.verticalElevated = 0;
+        this.stay = true;
+        this.score = 0;
+        this.holdingLeft = false;
+        this.holdingRight = false;
+        this.direction = "left";
+        this.counter = 0;
+        this.monkeyImgIdx = 0;
 
-
-
-        this.img = new Image(70, 70);
-        this.img.onload = () => this.draw();
-        this.img.src = leftMonkeyImg;
+        // this.img = new Image(70, 70);
+        // this.img.onload = () => this.draw();
+        // this.img.src = leftMonkeyImg;
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext("2d");
         this.ctx = ctx;
         this.canvas = canvas;
-
-        // this.draw();
-
     }
-
 
     update() {
         if (!this.isGameOver && !this.stay) {
-            // climber is falling
             this.ySpeed += this.gravity;
             if (this.y <= CONSTANTS.CANVAS_HEIGHT / 4 && this.ySpeed <= 0) {
                 //when going up, rock moves down
@@ -46,7 +79,7 @@ export default class Climber {
                 // climber moves at yspeed
                 this.y += this.ySpeed;
             }
-            this.yDistanceTravelled -= this.ySpeed;
+            this.verticalElevated -= this.ySpeed;
         } else if (this.isGameOver) {
             // if fall down to the bottom, game over
             this.ctx.font = "60px Arial";
@@ -54,34 +87,49 @@ export default class Climber {
             this.ctx.textAlign = "center";
             this.ctx.fillText("Game Over!", CONSTANTS.CANVAS_WIDTH / 2, CONSTANTS.CANVAS_HEIGHT / 2);
             this.ctx.font = "30px Arial";
-            this.ctx.fillText("Press space to restart", CONSTANTS.CANVAS_WIDTH / 2, (CONSTANTS.CANVAS_HEIGHT / 2) + 50);
+            this.ctx.fillText("Press enter to restart", CONSTANTS.CANVAS_WIDTH / 2, (CONSTANTS.CANVAS_HEIGHT / 2) + 50);
         }
 
-        // //holding left key
-        // if (holdingLeftKey) {
-        //this.stay = false
-        //     this.direction = "left";
-        //     // this.img.src = "";
-        //     this.climber.moveLeft();
-        // }
-        // //holding right key
-        // if (holdingRightKey) {
-        //     this.direction = "right";
-        //     // this.img.src = "";
-        //     this.climber.moveRight();
-        // }
+        //when climbing to left
+        if (this.holdingLeft === true && !this.stay) {
+            // this.stay = false;
+            this.direction = "left";
+            //     // this.img.src = ""; => to be edited after find left climbing motion image
+            this.img = new Image(70, 70);
+            this.img.onload = () => this.draw();
+            this.img.src = leftMonkeyImg;
+
+            this.x -= this.xSpeed;
+            if (this.x <= -this.width) {
+                this.x = CONSTANTS.CANVAS_WIDTH;
+            }
+        }
+
+        //when climbing to right
+        if (this.holdingRight === true && !this.stay) {
+            // this.stay = false;
+            // this.direction = "right";
+            //     // this.img.src = ""; => to be edited after find right climbing motion image
+
+            this.img = new Image(70, 70);
+            this.img.onload = () => this.draw();
+            this.img.src = rightMonkeyImg;
+
+            this.x += this.xSpeed;
+            if (this.x >= CONSTANTS.CANVAS_WIDTH) {
+                this.x = -this.width;
+            }
+        }
 
         //Check for climb
         for (let i = 0; i < this.rocks.length; i++) {
             if (this.ySpeed >= 0) {
-                if (this.x >= this.rocks[i].x - this.width + 15 && this.x <= this.rocks[i].x + this.rocks[i].width - 15 &&
+                if (this.x >= this.rocks[i].x - this.width + 16 && this.x <= this.rocks[i].x + this.rocks[i].width - 16 &&
                     this.y >= this.rocks[i].y && this.y <= this.rocks[i].y + this.rocks[i].height) {
-                    // this.climb();
                     this.stay = true;
                 }
             }
         }
-
 
         for (var i = this.rocks.length - 1; i > 0; i--) {
             if (this.rocks[i].y > CONSTANTS.CANVAS_HEIGHT) {
@@ -90,19 +138,32 @@ export default class Climber {
             }
         }
 
-        if (this.y >= this.rocks[this.rockParam.bottomRock].y) {
-            // this.isGameOver = true;
+        if (this.y >= this.rocks[this.rockParam.bottomRock].y && !this.stay && this.ySpeed > 0) {
+            this.isGameOver = true;
         }
 
-        if (this.rockParam.bottomRock >= 45) {
+        if (this.rockParam.bottomRock >= 5950) {
             this.rockMover();
+        }
+
+        // update mokey img for animation 
+        if (this.img) {
+            this.counter += 1;
+            if (this.counter % 6 === 0) {
+                this.monkeyImgIdx = (this.monkeyImgIdx + 1) % 12;
+                this.img = MONKEY_LEFT_IMGS[this.monkeyImgIdx];
+            }
+        } else {
+            this.direction = "left";
+            this.img = new Image(70, 70);
+            this.img.src = leftMonkeyImg;
         }
     }
 
     rockMover() {
         let i = this.rockParam.bottomRock === 0 ? 1 : this.rockParam.bottomRock;
 
-        for (i; i < this.rockParam.bottomRock + 60; i++) {
+        for (i; i < this.rockParam.bottomRock + 600; i++) {
             if (i >= this.rocks.length) {
                 let x = Math.random() * (CONSTANTS.CANVAS_WIDTH - CONSTANTS.ROCK_WIDTH);
                 let y = this.rocks[i - 1].y - ((Math.random() * 80) + 35);
@@ -116,26 +177,10 @@ export default class Climber {
         }
     }
 
+    // climb is triggerred by key press
     climb() {
-        this.ySpeed = -13;
-        this.ySpeed += this.gravity;
-        this.y -= this.ySpeed;
-    }
-
-    //when climbing to left
-    moveLeft() {
-        this.x -= this.xSpeed;
-        if (this.x <= -this.width) {
-            this.x = CONSTANTS.CANVAS_WIDTH;
-        }
-    }
-
-    //when climbing to right
-    moveRight() {
-        this.x += this.xSpeed;
-        if (this.x >= CONSTANTS.CANVAS_WIDTH) {
-            this.x = -this.width;
-        }
+        this.stay = false;
+        this.ySpeed = -14;
     }
 
     draw() {
