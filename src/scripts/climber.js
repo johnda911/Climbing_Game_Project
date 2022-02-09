@@ -1,6 +1,6 @@
 import { CONSTANTS } from "./constants.js";
-import leftMonkeyImg from "../imgs/newLeft.png";
-import rightMonkeyImg from "../imgs/newRight.png";
+import leftMonkeyImg from "../imgs/monkey/l4.png";
+import rightMonkeyImg from "../imgs/monkey/r4.png";
 import l0 from "../imgs/monkey/l0.png";
 import l1 from "../imgs/monkey/l1.png";
 import l2 from "../imgs/monkey/l2.png";
@@ -40,7 +40,7 @@ export default class Climber {
     constructor(rocks, rockParam) {
 
         this.x = 250;
-        this.y = 700;
+        this.y = 670;
         this.width = CONSTANTS.CLIMBER_WIDTH;
         this.height = CONSTANTS.CLIMBER_HEIGHT;
         this.gravity = CONSTANTS.GRAVITY;
@@ -58,9 +58,6 @@ export default class Climber {
         this.counter = 0;
         this.monkeyImgIdx = 0;
 
-        // this.img = new Image(70, 70);
-        // this.img.onload = () => this.draw();
-        // this.img.src = leftMonkeyImg;
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext("2d");
         this.ctx = ctx;
@@ -82,22 +79,20 @@ export default class Climber {
             this.verticalElevated -= this.ySpeed;
         } else if (this.isGameOver) {
             // if fall down to the bottom, game over
-            this.ctx.font = "60px Arial";
-            this.ctx.fillStyle = "orange";
+            this.ctx.font = "70px Arial";
+            this.ctx.fillStyle = "black";
             this.ctx.textAlign = "center";
             this.ctx.fillText("Game Over!", CONSTANTS.CANVAS_WIDTH / 2, CONSTANTS.CANVAS_HEIGHT / 2);
-            this.ctx.font = "30px Arial";
+            this.ctx.font = "45px Arial";
             this.ctx.fillText("Press enter to restart", CONSTANTS.CANVAS_WIDTH / 2, (CONSTANTS.CANVAS_HEIGHT / 2) + 50);
         }
 
         //when climbing to left
         if (this.holdingLeft === true && !this.stay) {
-            // this.stay = false;
-            this.direction = "left";
-            //     // this.img.src = ""; => to be edited after find left climbing motion image
-            this.img = new Image(70, 70);
-            this.img.onload = () => this.draw();
-            this.img.src = leftMonkeyImg;
+            // this.direction = "left";
+            // this.img = new Image(70, 70);
+            // this.img.onload = () => this.draw();
+            // this.img.src = leftMonkeyImg;
 
             this.x -= this.xSpeed;
             if (this.x <= -this.width) {
@@ -107,13 +102,9 @@ export default class Climber {
 
         //when climbing to right
         if (this.holdingRight === true && !this.stay) {
-            // this.stay = false;
-            // this.direction = "right";
-            //     // this.img.src = ""; => to be edited after find right climbing motion image
-
-            this.img = new Image(70, 70);
-            this.img.onload = () => this.draw();
-            this.img.src = rightMonkeyImg;
+            // this.img = new Image(70, 70);
+            // this.img.onload = () => this.draw();
+            // this.img.src = rightMonkeyImg;
 
             this.x += this.xSpeed;
             if (this.x >= CONSTANTS.CANVAS_WIDTH) {
@@ -124,8 +115,10 @@ export default class Climber {
         //Check for climb
         for (let i = 0; i < this.rocks.length; i++) {
             if (this.ySpeed >= 0) {
-                if (this.x >= this.rocks[i].x - this.width + 16 && this.x <= this.rocks[i].x + this.rocks[i].width - 16 &&
-                    this.y >= this.rocks[i].y && this.y <= this.rocks[i].y + this.rocks[i].height) {
+                if (this.x >= this.rocks[i].x - this.width + 70
+                    && this.x <= this.rocks[i].x + this.rocks[i].width - 70
+                    && this.y >= this.rocks[i].y
+                    && this.y <= this.rocks[i].y + this.rocks[i].height - 5) {
                     this.stay = true;
                 }
             }
@@ -155,8 +148,7 @@ export default class Climber {
             }
         } else {
             this.direction = "left";
-            this.img = new Image(70, 70);
-            this.img.src = leftMonkeyImg;
+            this.img = MK_IMG4;
         }
     }
 
@@ -184,6 +176,7 @@ export default class Climber {
     }
 
     draw() {
+        // this.ctx.drawImage(this.img, 10, 10, 680, 700, this.x, this.y, this.width, this.height);
         this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 }

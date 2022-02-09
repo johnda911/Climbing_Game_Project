@@ -5,7 +5,6 @@ import { CONSTANTS, getVerticalGap } from "./constants.js";
 import Climber from "./climber.js";
 
 
-
 export default class Game {
     constructor() {
         //declare variables 
@@ -15,6 +14,7 @@ export default class Game {
             bottomRock: 0
         };
         this.score = 0;
+
 
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext("2d");
@@ -88,7 +88,6 @@ export default class Game {
             if (event.code === 'ArrowRight' && !this.climber.isGameOver) {
                 this.climber.holdingRight = true;
             }
-
             if (event.code === 'Enter' && this.climber.isGameOver) {
                 this.climber.isGameOver = false;
                 this.resetGame();
@@ -111,19 +110,6 @@ export default class Game {
         this.ctx.fillStyle = "white";
         this.ctx.textAlign = "left";
         this.ctx.fillText(this.climber.score, 20, 30);
-
-        // this.renderScore = document.createElement('div');
-        // const renderScore = this.renderScore;
-        // renderScore.classList.add('score');
-        // renderScore.style.left = '10 px';
-        // renderScore.style.bottom = '60 px';
-        // renderScore.style.color = "pink";
-
-        // renderScore.innerText = '${this.climber.score}';
-        // document.getElementsById('rock-counts').appendChild(this.renderScore);
-
-
-        // console.log(this.climber.score);
     }
 
     resetGame() {
@@ -136,7 +122,7 @@ export default class Game {
 
         this.climber = this.createClimber(this.rocks, this.rockParam);
         this.climber.x = 250;
-        this.climber.y = 700;
+        this.climber.y = 670;
 
 
         // Time variables
@@ -157,7 +143,7 @@ export default class Game {
         this.delta = this.now - this.then;
 
         // Moving canvas jungle background to be continued
-        let backgroundImage = new Image(CONSTANTS.CANVAS_WIDTH, CONSTANTS.CANVAS_HEIGHT);
+        let backgroundImage = new Image();
         backgroundImage.onload = () => {
             this.ctx.drawImage(backgroundImage, 0, 0, CONSTANTS.CANVAS_WIDTH, CONSTANTS.CANVAS_HEIGHT);
         };
