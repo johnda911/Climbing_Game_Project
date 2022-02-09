@@ -79,12 +79,7 @@ export default class Climber {
             this.verticalElevated -= this.ySpeed;
         } else if (this.isGameOver) {
             // if fall down to the bottom, game over
-            this.ctx.font = "70px Arial";
-            this.ctx.fillStyle = "black";
-            this.ctx.textAlign = "center";
-            this.ctx.fillText("Game Over!", CONSTANTS.CANVAS_WIDTH / 2, CONSTANTS.CANVAS_HEIGHT / 2);
-            this.ctx.font = "45px Arial";
-            this.ctx.fillText("Press enter to restart", CONSTANTS.CANVAS_WIDTH / 2, (CONSTANTS.CANVAS_HEIGHT / 2) + 50);
+            this.showGameOver();
         }
 
         //when climbing to left
@@ -173,6 +168,30 @@ export default class Climber {
     climb() {
         this.stay = false;
         this.ySpeed = -14;
+    }
+
+    showGameOver() {
+        this.ctx.fillStyle = "#2c3e50";
+        this.ctx.fillRect(CONSTANTS.CANVAS_WIDTH / 8, CONSTANTS.CANVAS_HEIGHT / 2.5, 460, 250);
+
+        //set the canvas style for the game over board
+        this.ctx.strokeRect(CONSTANTS.CANVAS_WIDTH / 8, CONSTANTS.CANVAS_HEIGHT / 2.5, 460, 250);
+        this.ctx.shadowColor = 'black';
+        this.ctx.shadowBlur = 20;
+        this.ctx.lineJoin = 'bevel';
+        this.ctx.lineWidth = 5;
+        this.ctx.strokeStyle = 'black';
+        this.ctx.globalAlpha = 0.7;
+
+        // set the font style for game over
+        this.ctx.font = "50px Nunito";
+        this.ctx.fillStyle = "yellow";
+        this.ctx.textAlign = "center";
+        this.ctx.fillText("Game Over!", CONSTANTS.CANVAS_WIDTH / 2, CONSTANTS.CANVAS_HEIGHT / 2);
+        this.ctx.font = "35px Nunito";
+        this.ctx.fillStyle = "white";
+        this.ctx.fillText(`Your score is ${this.score}`, CONSTANTS.CANVAS_WIDTH / 2, (CONSTANTS.CANVAS_HEIGHT / 2) + 50);
+        this.ctx.fillText("Press enter to restart", CONSTANTS.CANVAS_WIDTH / 2, (CONSTANTS.CANVAS_HEIGHT / 2) + 100);
     }
 
     draw() {

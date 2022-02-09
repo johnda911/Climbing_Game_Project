@@ -1,5 +1,5 @@
 import { CONSTANTS } from "./constants.js";
-import brick from "../imgs/banana.png";
+import banana from "../imgs/banana.png";
 
 export default class Rock {
     constructor(x, y) {
@@ -12,7 +12,7 @@ export default class Rock {
 
         this.img = new Image(CONSTANTS.ROCK_WIDTH, CONSTANTS.ROCK_HEIGHT);
         this.img.onload = () => this.draw();
-        this.img.src = brick;
+        this.img.src = banana;
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext("2d");
         this.ctx = ctx;

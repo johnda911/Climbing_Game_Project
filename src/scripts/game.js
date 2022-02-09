@@ -1,8 +1,10 @@
 // import KingKong from "./kingKong.js";
-import Rock from "./rock.js";
-import jungle from "../imgs/jungle.png";
 import { CONSTANTS, getVerticalGap } from "./constants.js";
+import Rock from "./rock.js";
 import Climber from "./climber.js";
+import jungle from "../imgs/jungle.png";
+import scoreLogo from "../imgs/score_logo.png";
+
 
 
 export default class Game {
@@ -106,10 +108,16 @@ export default class Game {
         if (this.climber.verticalElevated > this.climber.score) {
             this.climber.score = Math.round(this.climber.verticalElevated);
         }
-        this.ctx.font = "36px Arial";
+        //create banana score logo in the upperleft of the canvas
+        this.img = new Image(20, 35);
+        this.img.src = scoreLogo;
+        this.ctx.drawImage(this.img, 10, 2, 20, 35);
+
+        //render the score showing on upperleft corner of canvas
+        this.ctx.font = "30px Nunito";
         this.ctx.fillStyle = "white";
         this.ctx.textAlign = "left";
-        this.ctx.fillText(this.climber.score, 20, 30);
+        this.ctx.fillText(this.climber.score, 35, 30);
     }
 
     resetGame() {
@@ -124,14 +132,11 @@ export default class Game {
         this.climber.x = 250;
         this.climber.y = 670;
 
-
-        // Time variables
-        // this.fps = 60;
-        // this.now;
-        // this.then = Date.now();
-        // this.interval = 1000 / this.fps;
-        // this.delta;
+        this.ctx.globalAlpha = 1;
+        this.ctx.shadowColor = '#000000';
+        this.ctx.shadowBlur = 0;
         this.startGame();
+
     }
 
     loop() {
@@ -162,7 +167,6 @@ export default class Game {
             this.climber.draw();
             this.showRockCounts();
 
-            // this.ctx.fill();
             this.then = this.now - (this.delta % this.interval);
         }
     }
