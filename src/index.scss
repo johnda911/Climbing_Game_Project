@@ -58,14 +58,16 @@ h1 {
   padding-right: 20px;
 }
 #game-logo {
-  // height: 50px;
   width: 60px;
+  cursor: pointer;
+}
+#banana-logo {
+  width: 40px;
   cursor: pointer;
 }
 .header-nav {
   font-size: 30px;
   font-weight: 400;
-  // border: 6px solid;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -143,6 +145,10 @@ h1 {
   height: 25px;
   width: 40px;
 }
+.coconut-bul {
+  height: 25px;
+  width: 40px;
+}
 
 .climb-game {
   margin-top: 28px;
@@ -158,71 +164,51 @@ h1 {
   display: none !important;
 }
 
-body {
-  background: #d5d5d5;
-  font-family: museo-300;
-  font-size: 1.5rem;
-  text-align: center;
-}
-.tri,
-.flecha {
-  display: inline-block;
-  margin: 15px;
-}
+// to add the post it effect:
+// body {
+//   background: rgb(204, 204, 204);
+// }
 
-.tri {
-  text-align: left;
-  width: 250px;
-  height: 100px;
-  background: #fff;
-  position: relative;
-  padding: 15px;
-  box-sizing: border-box;
-}
-.tri:after {
-  content: "";
-  height: 0;
-  width: 0;
-  border-width: 20px 20px 20px 0;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 1)
-    rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
-  position: absolute;
-  top: 15px;
-  left: -20px;
-}
-
-.flecha {
-  position: relative;
-  margin: -20px 110px 0;
-  width: 0;
-  height: 0;
-  border-top: 90px solid transparent;
-  border-right: 90px solid #ffc000;
-  -webkit-transform: rotate(10deg);
-  -moz-transform: rotate(10deg);
-  -ms-transform: rotate(10deg);
-  -o-transform: rotate(10deg);
-}
-.flecha:after {
-  content: "";
-  position: absolute;
-  border: 0 solid transparent;
-  border-top: 30px solid #ffc000;
-  border-radius: 200px 0 0 0;
-  top: -119px;
-  left: -98px;
-  width: 120px;
-  height: 120px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-}
-
-.drop-shadow {
-  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
-}
-.box-shadow {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-}
+// .box h3 {
+//   text-align: center;
+//   position: relative;
+//   top: 80px;
+// }
+// .box {
+//   width: 70%;
+//   height: 200px;
+//   background: #fff;
+//   margin: 40px auto;
+// }
+// .effect5 {
+//   position: relative;
+// }
+// .effect5:before,
+// .effect5:after {
+//   z-index: -1;
+//   position: absolute;
+//   content: "";
+//   bottom: 25px;
+//   left: 10px;
+//   width: 50%;
+//   top: 80%;
+//   max-width: 300px;
+//   background: #777;
+//   -webkit-box-shadow: 0 35px 20px #777;
+//   -moz-box-shadow: 0 35px 20px #777;
+//   box-shadow: 0 35px 20px #777;
+//   -webkit-transform: rotate(-8deg);
+//   -moz-transform: rotate(-8deg);
+//   -o-transform: rotate(-8deg);
+//   -ms-transform: rotate(-8deg);
+//   transform: rotate(-8deg);
+// }
+// .effect5:after {
+//   -webkit-transform: rotate(8deg);
+//   -moz-transform: rotate(8deg);
+//   -o-transform: rotate(8deg);
+//   -ms-transform: rotate(8deg);
+//   transform: rotate(8deg);
+//   right: 10px;
+//   left: auto;
+// }

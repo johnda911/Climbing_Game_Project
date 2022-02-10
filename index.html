@@ -21,6 +21,8 @@
           src="./src/imgs/monkey_portrait.png"
           alt="./src/imgs/branch.png"
         />
+        <img id="banana-logo" src="./src/imgs/banana.png" />
+        <img id="banana-logo" src="./src/imgs/banana.png" />
 
         <nav class="header-nav">
           <h1>MONKEY CLIMBING GAME</h1>
@@ -48,8 +50,12 @@
       </header>
 
       <main class="content">
-        <section class="left-col">
-          <h4 id="choices-title">Game Play</h4>
+        <section class="left-col" id="left-col">
+          <h4 id="choices-title">
+            <img class="coconut-bul" src="./src/imgs/coconutLeft.png" />
+            Game Play
+            <img class="coconut-bul" src="./src/imgs/coconutRight.png" />
+          </h4>
 
           <ul class="game-list">
             <p>
@@ -81,6 +87,7 @@
               </li>
               <p>
                 play music here!
+
                 <i
                   class="fa-regular fa-circle-play fa-2x music-button"
                   id="music-on"
@@ -118,13 +125,5 @@
         offButton.classList.add("hidden");
       };
     </script>
-
-    <footer>
-      <div class="tri drop-shadow">filter: drop-shadow</div>
-      <div class="tri box-shadow">box-shadow</div>
-      <div style="clear: both"></div>
-      <div class="flecha drop-shadow"></div>
-      <div class="flecha box-shadow"></div>
-    </footer>
   </body>
 </html>
