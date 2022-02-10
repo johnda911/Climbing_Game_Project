@@ -5,38 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" type="text/css" href="./dist/main.css" />
+    <script
+      src="https://kit.fontawesome.com/817099719e.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="./dist/main.js"></script>
     <title>🧗‍♀️Katie's Climbing Project</title>
   </head>
 
   <body>
-    <header class="header">
-      <nav class="header-nav">
-        <h2 class="header-logo">
-          <button class="instructions">Instructions</button>
-        </h2>
+    <div class="container">
+      <header class="navbar">
+        <img
+          id="game-logo"
+          src="./src/imgs/monkey_portrait.png"
+          alt="./src/imgs/branch.png"
+        />
 
-        <ul class="header-list">
+        <nav class="header-nav">
+          <h1>MONKEY CLIMBING GAME</h1>
+        </nav>
+
+        <ul>
           <li>
-            <a href="#">Music Button <strong class="badge">3</strong></a>
-            <ul class="turn-music">
-              <li><a href="#">On</a></li>
-              <li><a href="#">Off</a></li>
-            </ul>
+            <a
+              href="https://www.linkedin.com/in/yuchen-katie-hang-443b27a4/"
+              target="_blank"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
           </li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">About Creater</a></li>
+          <li>
+            <a href="https://github.com/johnda911" target="_blank">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/yckatieh/" target="_blank"
+              ><i class="fa-brands fa-instagram-square"></i
+            ></a>
+          </li>
         </ul>
-      </nav>
-    </header>
+      </header>
 
-    <main class="content">
-      <section class="character-choice">
-        <h1>Pick a character</h1>
-      </section>
-      <session class="climb-game">
-        <canvas id="canvas"></canvas>
-      </session>
-    </main>
+      <main class="content">
+        <section class="left-col">
+          <h4 id="choices-title">Game Play</h4>
+
+          <ul class="game-list">
+            <p>
+              <img class="banana-bul" src="./src/imgs/banana.png" />
+              Player
+            </p>
+
+            <li><small>1 monkey</small></li>
+            <p><img class="banana-bul" src="./src/imgs/banana.png" /> Goal</p>
+            <small>
+              <li>
+                Keep climbing higher and higher for as long as possible to
+                achieve your greatest score.
+              </li>
+            </small>
+            <p><img class="banana-bul" src="./src/imgs/banana.png" /> Rules</p>
+            <ul>
+              <li><small>Press the ↵ key to start the game.</small></li>
+              <li>
+                <small>Use ← → keys to control the direction. </small>
+              </li>
+              <li>
+                <small> Use the ↵ key to climb up. </small>
+              </li>
+              <li>
+                <small
+                  >Keep climbing higher and higher while earning poinsts.</small
+                >
+              </li>
+              <p>
+                play music here!
+                <i
+                  class="fa-regular fa-circle-play fa-2x music-button"
+                  id="music-on"
+                ></i>
+                <i
+                  class="fa-regular fa-circle-pause fa-2x music-button hidden"
+                  id="music-off"
+                ></i>
+              </p>
+            </ul>
+          </ul>
+        </section>
+        <session class="climb-game">
+          <canvas id="canvas"></canvas>
+        </session>
+
+        <section class="right-col"></section>
+      </main>
+    </div>
+    <audio id="jungle-music">
+      <source src="./src/imgs/music/background_music.mp3" type="audio/mp3" />
+    </audio>
+    <script>
+      let mySong = document.getElementById("jungle-music");
+      let offButton = document.getElementById("music-off");
+      let playButton = document.getElementById("music-on");
+      playButton.onclick = function () {
+        mySong.play();
+        offButton.classList.remove("hidden");
+        playButton.classList.add("hidden");
+      };
+      offButton.onclick = function () {
+        mySong.pause();
+        playButton.classList.remove("hidden");
+        offButton.classList.add("hidden");
+      };
+    </script>
+
+    <footer>
+      <div class="tri drop-shadow">filter: drop-shadow</div>
+      <div class="tri box-shadow">box-shadow</div>
+      <div style="clear: both"></div>
+      <div class="flecha drop-shadow"></div>
+      <div class="flecha box-shadow"></div>
+    </footer>
   </body>
 </html>

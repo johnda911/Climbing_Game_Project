@@ -181,7 +181,7 @@ export default class Climber {
         this.ctx.lineJoin = 'bevel';
         this.ctx.lineWidth = 5;
         this.ctx.strokeStyle = 'black';
-        this.ctx.globalAlpha = 0.7;
+        this.ctx.globalAlpha = 0.5;
 
         // set the font style for game over
         this.ctx.font = "50px Nunito";

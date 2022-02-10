@@ -69,7 +69,7 @@ export default class Game {
     startGame() {
         // climb up
         document.addEventListener('keyup', event => {
-            if (event.code === 'Space' && this.climber.stay) {
+            if (event.code === 'Enter' && this.climber.stay) {
                 this.climber.climb();
             }
 
