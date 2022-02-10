@@ -1,47 +1,34 @@
-# The Climbing Game
+# The Monkey Climbing Game
 
 # Background
 
 The Monkey Climbing game is javascript game where you control a monkey to climb on bananas and climb as high as you can without falling. You will get scored with the climbing distance you have made during the game.
 
-# Functionality & MVPs
+# Link to Live Site
 
-In the climbing game, users will be able to:
-
-- use the left/right keyboard to control the climbing direction and reach the bananas to avoid falling off
-- see moving bananas as they climb all the way up
-- accumulate their scores by climbing as much as they could
-
-In addition, this project will include:
-
-- An **About** modal describing the background and rules of the game
-- A production README
-
-# Wireframes
-
-![Alt text](./Wireframe.png)
-
-- On the upper right corner, three clickable contact icons of the author are presented for users to get information about the game creator.
-- Instruction on the left column includes the background and rules of the game.
-- A music button on the lower left corner to control the music on and off.
-- Score on the upper left of the game canvas keeps track of the climbing distance the player accumulates.
+https://johnda911.github.io/Climbing_Game_Project/
 
 # Technologies, Libraries, APIs
 
 I use the native browser technology, Canvas API to render the background of the game, bananas as well as the monkey, all the motions involved.
 
-# Implementation Timeline
+# Animation Effects
 
-- **Friday Afternoon & Weekend**: Setup project, including getting webpack up and running. Get moving canvas to show up on the screen, and spend time getting comfortable with the Canvas API. Create `Rock` and individual `Character`, `Dragon`and `BrokenRock` classes. Get a character rendered to the canvas reflecting the climbing motion during the game.
-- **Monday**: Dedicate this day toward implementing the underlying logic of the game. Ensure that I can get the moving canvas work and the snow flacks/ fire-breathing dragon work appropriately. If time, make sure this is all rendered correctly on the canvas.
-- **Tuesday**: If I didn't get to it already, get everything correctly rendered to the canvas. Make sure they re-render correctly when I restart the game. Then, focus on user controls: left, right arrows keyboard controls.
-- **Wednesday**: Finish implementing user controls, and focus on styling, as well as implementing the different color schemes and nav links. If time, start on bonuses.
-- **Thursday Morning**: Deploy to GitHub pages. If time, rewrite this proposal as a production README.
+All the animations are built up on the event listener and the callback equestAnimationFrame. I set up the fps to 70 so that the callback is invoked and repaint the canvas every 1 second / 70 frames. That's why players can see the bananas/monkey moving onscreen visually.
 
-# Bonus features
+# Code Snippets Highlights
 
-There are many themes and characters with different climbing behaviors I can add on to the main game.
+The monkey is swinging on a banana when the status is idle. It was not recommended to do a frame by frame animation on the game canvas. In order to address that, I created an empty array as a contained for storing all my consecutive static png of my monkey, then I was able to iterate through the image array so that whenever the callback is invoked, the image will get replaced with the next following image in the array.
 
-- More themes to choose from a drop down list.
-- More obstacles and reward types to be encoutered the higher the monkey climbs up.
-- Create different motion effect on different characters accordingly, rather than just a different images.
+```javascript
+// step1: after loading all consecutive motion images of the monkey, I created an awway including all the images variables inside:
+const MONKEY_LEFT_IMGS = [MK_IMG0, MK_IMG1, MK_IMG2, MK_IMG3, MK_IMG4, MK_IMG5, MK_IMG6, MK_IMG7, MK_IMG8, MK_IMG9, MK_IMG10, MK_IMG11];
+
+//step2: start interating through the index of the image array while still repainting 70 frams every second.
+this.counter += 1;
+    if (this.counter % 6 === 0) {
+        this.monkeyImgIdx = (this.monkeyImgIdx + 1) % 12;
+        this.img = MONKEY_LEFT_IMGS[this.monkeyImgIdx];
+    }};
+
+```
