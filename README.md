@@ -2,16 +2,15 @@
 
 # Background
 
-The Climbing game is similar to Doodle Jump. It enables you to choose from 3 characters as a player as he/she climbs up a mountain through a series of rocks. You must avoid the hazards that get in your way(e.g. avalanche, broken rocks, or a dragon breathing fire to you etc. ) to prevent yourself from falling off the rocks. The background of the game board will also dynamically change as you climb your way up to the mountain. It will be sunny initially and start raining when the dragon comes to the place, and if you can summit, you win. Meanwhile, you will still get scored with the numbers of rocks you passed.
+The Monkey Climbing game is javascript game where you control a monkey to climb on bananas and climb as high as you can without falling. You will get scored with the climbing distance you have made during the game.
 
 # Functionality & MVPs
 
 In the climbing game, users will be able to:
 
-- pick a character and start the game
-- use the left/right keyboard to control the climbing direction and reach the rocks to avoid falling off
-- see a moving background as they climb all the way up
-- accumulate their scores by passing more rock
+- use the left/right keyboard to control the climbing direction and reach the bananas to avoid falling off
+- see moving bananas as they climb all the way up
+- accumulate their scores by climbing as much as they could
 
 In addition, this project will include:
 
@@ -22,16 +21,14 @@ In addition, this project will include:
 
 ![Alt text](./Wireframe.png)
 
-- Instruction on the upper left include the background and rules of the game.
-- Rock count keeps track of the number of rocks the player accumulates.
-- In the top middle , there will be clickable music play button.
-- On the right, there will be Author information including links to this project's Github repo, my LinkedIn and AngelList.
-- On the left, three clickable characters will be presented for users to pick as different characters have different climbing speed and different motion types. (Bonus)
-- Additionally, a drop-down will be added to pick a theme for different rule sets (Bonus).
+- On the upper right corner, three clickable contact icons of the author are presented for users to get information about the game creator.
+- Instruction on the left column includes the background and rules of the game.
+- A music button on the lower left corner to control the music on and off.
+- Score on the upper left of the game canvas keeps track of the climbing distance the player accumulates.
 
 # Technologies, Libraries, APIs
 
-I am planning to use the native browser technology, Canvas API to render the background of the game as well as the characters, all the motions involved.
+I use the native browser technology, Canvas API to render the background of the game, bananas as well as the monkey, all the motions involved.
 
 # Implementation Timeline
 
@@ -45,5 +42,6 @@ I am planning to use the native browser technology, Canvas API to render the bac
 
 There are many themes and characters with different climbing behaviors I can add on to the main game.
 
-- More themes to choose from a drop down list
+- More themes to choose from a drop down list.
+- More obstacles and reward types to be encoutered the higher the monkey climbs up.
 - Create different motion effect on different characters accordingly, rather than just a different images.
