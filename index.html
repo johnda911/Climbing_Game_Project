@@ -38,7 +38,7 @@
         <img id="banana-logo" src="./src/imgs/banana.png" />
 
         <nav class="header-nav">
-          <h1>MONKEY CLIMBING GAME</h1>
+          <div class="monkey-climbing-game">MONKEY CLIMBING GAME</div>
         </nav>
 
         <ul>
@@ -68,7 +68,7 @@
       </header>
 
       <main class="content">
-        <section class="left-col" id="left-col">
+        <section class="left-col">
           <h4 id="choices-title">
             <img class="coconut-bul" src="./src/imgs/coconutLeft.png" />
             Game Play
@@ -119,10 +119,11 @@
           </ul>
         </section>
         <session class="climb-game">
-          <canvas id="canvas"></canvas>
+          <div style="position:relative;top:-80px;">
+          <canvas id="canvas" width="320" height="240" style="position:relative; left:-15px;"></canvas>
         </session>
 
-        <section class="right-col"></section>
+        <!-- <section class="right-col"></section> -->
       </main>
     </div>
     <audio id="jungle-music">

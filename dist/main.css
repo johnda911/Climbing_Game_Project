@@ -1,5 +1,161 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap);
+/*!*****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
+  \*****************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Fruktur&family=Nunito:wght@800&display=swap);
-*{margin:20;padding:0;font-family:"Nunito",sans-serif}.container{height:100vh;width:100%;background-color:#2c3e50;background-size:cover;background-position:center;position:relative}#canvas{border:4px solid #000;width:600;height:800}body{font-family:"Nunito",sans-serif;display:flex;flex-direction:column;justify-content:space-around;margin:0;font-size:20px;font-weight:400;color:beige;background-color:#2c3e50}.navbar{width:88%;margin:auto;margin-top:20px;padding:30px o;display:flex;align-items:center;justify-content:space-between}h1{font-size:60px;box-shadow:10px 6px 6px #000;padding-left:20px;padding-right:20px}#game-logo{width:60px;cursor:pointer}#banana-logo{width:40px;cursor:pointer}.header-nav{font-size:30px;font-weight:400;padding-left:20px;padding-right:20px}.navbar ul li{list-style:none;display:inline-block;margin:6px 8px}.navbar ul li a{text-decoration:none;color:#c5bb29;font-size:50px}.navbar ul li a:hover{color:#f5f5f5}.content{width:100%;position:absolute;top:20%;margin:0;margin-top:20px;display:flex;justify-content:space-around}.left-col{margin-left:5%;margin-bottom:10%;position:flex;flex-direction:column;justify-content:space-around;max-width:400px}.left-col p{margin-left:3%;text-align:left}.left-col h4{font-size:40px;color:#c5bb29;line-height:110px;text-align:center;margin-top:0;margin-bottom:0}.left-col p{font-size:25px;font-weight:400;text-align:center}.banana-bul{height:25px;width:40px}.coconut-bul{height:25px;width:40px}.climb-game{margin-top:28px;width:55%}.music-button{color:#c5bb29;cursor:pointer}.hidden{display:none !important}
+/*!*****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (2) ***!
+  \*****************************************************************************************************************************************/
+* {
+  margin: 20;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+}
 
-/*# sourceMappingURL=main.css.map*/
+.container {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+#canvas {
+  border: 4px solid black;
+  width: 600;
+  height: 800;
+  min-width: 600px;
+}
+
+body {
+  background-color: #2c3e50;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  color: beige;
+}
+
+.navbar {
+  width: 88%;
+  height: 120px;
+  min-width: 1020px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 30px o;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+}
+
+.monkey-climbing-game {
+  font-size: 40px;
+  box-shadow: 10px 6px 6px black;
+  padding: 20px;
+  min-width: 520px;
+}
+
+#game-logo {
+  width: 60px;
+  cursor: pointer;
+}
+
+#banana-logo {
+  width: 40px;
+  cursor: pointer;
+}
+
+.header-nav {
+  font-size: 30px;
+  font-weight: 400;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.navbar ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 6px 8px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #c5bb29;
+  font-size: 50px;
+}
+
+.navbar ul li a:hover {
+  color: whitesmoke;
+  transition: 0.8s;
+}
+
+.content {
+  width: 100%;
+  position: absolute;
+  top: 20%;
+  margin: 0;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  max-width: 1500px;
+}
+
+.left-col {
+  margin-left: 5%;
+  margin-bottom: 10%;
+  position: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.left-col p {
+  margin-left: 3%;
+  text-align: left;
+  font-size: 25px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.left-col h4 {
+  font-size: 40px;
+  color: #c5bb29;
+  line-height: 110px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.banana-bul {
+  height: 25px;
+  width: 40px;
+}
+
+.coconut-bul {
+  height: 25px;
+  width: 40px;
+}
+
+.climb-game {
+  margin-top: 28px;
+  width: 55%;
+  min-width: 600px;
+  max-width: 700px;
+}
+
+.music-button {
+  color: #c5bb29;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
