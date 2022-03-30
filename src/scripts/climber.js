@@ -158,7 +158,7 @@ export default class Climber {
             }
         }
 
-        //Remove blocks out of canvas
+        //Remove bananas out of canvas
         for (let i = 0; i < this.rockParam.bottomRock - 2; i++) {
             rocks.shift();
         }

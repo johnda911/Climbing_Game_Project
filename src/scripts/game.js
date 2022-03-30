@@ -1,4 +1,3 @@
-// import KingKong from "./kingKong.js";
 import { CONSTANTS, getVerticalGap } from "./constants.js";
 import Rock from "./rock.js";
 import Climber from "./climber.js";
@@ -9,14 +8,12 @@ import scoreLogo from "../imgs/score_logo.png";
 
 export default class Game {
     constructor() {
-        //declare variables 
         this.rocks = [];
         this.bottomRock = 0;
         this.rockParam = {
             bottomRock: 0
         };
         this.score = 0;
-
 
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext("2d");
@@ -27,8 +24,6 @@ export default class Game {
         this.climber = this.createClimber(this.rocks, this.rockParam);
         this.startGame();
 
-
-        // Time variables
         this.fps = 70;
         this.now;
         this.then = Date.now();
@@ -63,7 +58,6 @@ export default class Game {
 
     createClimber(rocks, rockParam) {
         return new Climber(rocks, rockParam);
-        // this.climber = new Climber(this.rocks, this.rockParam);
     }
 
     startGame() {
@@ -157,8 +151,6 @@ export default class Game {
         if (this.delta > this.interval) {
             for (let j = 0; j < this.rocks.length; j++) {
                 if (this.rocks[j] !== 0) {
-                    //add rock.update after dragon feature
-                    // this.rocks[j].update();
                     this.rocks[j].draw();
                 }
             }
